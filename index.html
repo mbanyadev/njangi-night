@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Njangi Night — save together, bid smart</title>
+<meta name="description" content="A financial-literacy game about a Cameroonian bidding njangi: bidding is borrowing, waiting is earning.">
+<meta property="og:title" content="Njangi Night">
+<meta property="og:description" content="Save together. Bid smart. Sew your future.">
+<meta property="og:image" content="assets/cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23ffc42e%22/%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2222%22 fill=%22%237b3fa0%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <div id="stage" aria-live="polite">
+    <div id="bg"></div>
+    <header id="hud" class="hidden">
+      <div class="brand"><span class="logo-mark">◎</span> Njangi Night</div>
+      <div id="months" class="months" aria-label="Month progress"></div>
+      <div class="chips">
+        <div class="chip cash" title="Cash in your pocket"><span class="ic">💵</span><span class="lbl">Cash</span><b id="s-cash">0</b></div>
+        <div class="chip jar" title="Trouble Jar: your emergency fund"><span class="ic">🫙</span><span class="lbl">Trouble Jar</span><b id="s-jar">0</b></div>
+        <div class="chip debt" title="Quick Cash debt (20% per month)"><span class="ic">📛</span><span class="lbl">Debt</span><b id="s-debt">0</b></div>
+        <div class="chip trust" title="Trust in the njangi"><span class="ic">🤝</span><span class="lbl">Trust</span><b id="s-trust">0</b></div>
+      </div>
+      <button id="btn-settings" class="icon-btn" aria-label="Settings">⚙</button>
+    </header>
+    <div id="circle" class="hidden">
+      <div id="pot"><div class="pot-glow"></div><div class="pot-bowl"><svg viewBox="0 0 120 80" aria-hidden="true"><defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffcf4d"/><stop offset="1" stop-color="#e08a1e"/></linearGradient></defs><ellipse cx="60" cy="22" rx="56" ry="14" fill="#8a4b1c"/><path d="M4 22 Q8 78 60 78 Q112 78 116 22 Z" fill="url(#g1)"/><path d="M14 40 H106 M20 54 H100" stroke="#b5651d" stroke-width="4" stroke-linecap="round" opacity=".55"/><ellipse cx="60" cy="22" rx="48" ry="9" fill="#ffd96b"/><circle cx="44" cy="20" r="7" fill="#fff1a8" stroke="#d99a1c" stroke-width="2"/><circle cx="62" cy="17" r="7" fill="#fff1a8" stroke="#d99a1c" stroke-width="2"/><circle cx="78" cy="21" r="7" fill="#fff1a8" stroke="#d99a1c" stroke-width="2"/></svg></div><div class="pot-label">THE POT</div><div id="pot-amt" class="pot-amt">0</div></div>
+      <div id="seats"></div>
+    </div>
+    <section id="panel" class="hidden" role="dialog" aria-modal="false"></section>
+    <section id="screen"></section>
+    <div id="toasts"></div>
+    <div id="settings" class="hidden" role="dialog" aria-label="Settings">
+      <h3>Settings</h3>
+      <label class="tog"><input type="checkbox" id="opt-big"> <span>Bigger text</span></label>
+      <label class="tog"><input type="checkbox" id="opt-motion"> <span>Reduce motion</span></label>
+      <label class="tog"><input type="checkbox" id="opt-sound" checked> <span>Sound effects</span></label>
+      <label class="tog"><input type="checkbox" id="opt-simple"> <span>Simple words</span></label>
+      <button class="btn primary" id="settings-close">Done</button>
+    </div>
+  </div>
+</div>
+<script src="core.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
