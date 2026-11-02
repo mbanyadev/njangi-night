@@ -5,7 +5,7 @@
 |---|---|---|---|---|
 | 1 | Lead developer / designer | Full-time, gameplay + systems | 6 | 12,000 |
 | 2 | 2D artist (contract) | Characters, expressions, 3 new locations, UI polish | 3 | 4,500 |
-| 3 | Localisation | French + Arabic (incl. RTL QA), native reviewers | — | 1,800 |
+| 3 | Localisation | Native-speaker review of the jam FR + AR text, new-content translation, RTL QA | — | 1,800 |
 | 4 | Financial-education advisor | Curriculum review, outcome quiz design | — | 1,500 |
 | 5 | Audio | Music loop + SFX pack (licensed/commissioned) | — | 900 |
 | 6 | Multiplayer backend | Managed DB/realtime + hosting, 6 months | 6 | 900 |
@@ -20,7 +20,7 @@
 ## Milestones tied to funding
 | Milestone | Deliverable | Share |
 |---|---|---|
-| M1 (month 2) | FR + AR jam'iya mode, 30 events, classroom mode | 35% |
+| M1 (month 2) | Dubai jam'iya mode (AED, UAE scenarios, Zakat), native-reviewed FR + AR, 30 events, classroom mode | 35% |
 | M2 (month 4) | Async multiplayer njangi beta, 2 playtest rounds | 35% |
 | M3 (month 6) | Public launch (web + Android), outcome study report | 30% |
 

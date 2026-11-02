@@ -1,5 +1,5 @@
 # Njangi Night: Game Design Document
-*Zoud GameLab entry by Mbanya Dev. Version 0.1 (first playable), November 2026*
+*Zoud GameLab entry by Mbanya Dev. Version 0.2 (balance, EN/FR/AR, polish pass), November 2026*
 
 ## 1. Pitch
 **Save together. Bid smart. Sew your future.**
@@ -17,15 +17,17 @@ Hundreds of millions of people use rotating savings and credit associations (ROS
 - **Secondary:** teachers and NGOs running financial-literacy sessions (a session takes about 10–12 minutes).
 
 ## 4. Core loop (one month = one round, 6 rounds)
-1. **Payday:** income 25,000 (+9,000 once you own the machine). Rent and food (13,000) leave automatically.
+1. **Payday:** income 25,000 (+8,000 once you own the machine). Rent and food (13,000) leave automatically.
 2. **Plan:** move money into the Trouble Jar and repay debt. Cash left in your pocket "leaks" (small spending).
-3. **Life happens:** one event card with real trade-offs (13 events: malaria clinic bill, scam SMS, phone on instalments, funeral contribution, "money doubler" scheme, power cut, customer wants credit, rent rise, wedding order…). Pay from the Jar, cash, or **Quick Cash** (20% a month).
+3. **Life happens:** one event card with real trade-offs, drawn on a **difficulty curve**: gentle cards in month 1, medium in months 2–3, hard shocks in months 4–6 (13 events: malaria clinic bill, scam SMS, phone on instalments, funeral contribution, "money doubler" scheme, power cut, customer wants credit, rent rise, wedding order…). Pay from the Jar, cash, or **Quick Cash** (20% a month).
 4. **Njangi night:** contribute 10,000. If you can't, cover it from the Jar or a loan, or default (fine plus trust loss). Neighbours voice their needs in speech bubbles. Then you place a **sealed bid** with a slider that shows, live, *what you receive*, *what each neighbour earns*, and **your price of money** as a monthly interest rate.
 5. **Reveal:** bids flip, the winner takes pot − bid, and the bid is split among the others (including you).
 6. **If you win:** buy the machine (productive), fill the Jar (resilience), or repay debt.
 7. **Month end:** debt interest accrues and the pocket leaks.
 
-**End screen:** 4 stars (Machine · Jar ≥ 20,000 · Debt-free · Trust ≥ 70), net worth, a month-by-month timeline of who took the pot at what bid, and personalised lessons generated from *your* choices.
+**End screen:** 4 stars (Machine **by month 4** · Jar ≥ 25,000 · Debt-free · Trust ≥ 72), net worth, a **price-of-money chart** (every winning bid as a monthly rate next to Quick Cash's 20%), a month-by-month timeline of who took the pot at what bid, and personalised lessons generated from *your* choices (Aïcha's interest-free lesson always shows). Best score is saved on the device.
+
+A live **goals strip** under the HUD shows the four stars filling in (or being lost) during play, so the target is never hidden until the end.
 
 ## 5. Characters (AI bidders with distinct money personalities)
 | Member | Personality | Teaches |
@@ -48,22 +50,37 @@ Hundreds of millions of people use rotating savings and credit associations (ROS
 Each lesson is *felt* (cash, stars, neighbours' reactions) before it's *named* on the end screen.
 
 ## 7. Accessibility & inclusion
-- Settings: **bigger text**, **reduce motion**, **sound on/off**, **simple words** mode.
+- Settings: **bigger text**, **reduce motion** (also follows the OS setting), **sound** and **music** on/off, **simple words** mode, and **language** (English, Français, العربية).
+- Keyboard: Tab/Enter everywhere; number keys **1–4** pick choices (badges shown on each card).
 - Status is never colour-only: icons + labels everywhere.
 - Mouse, touch, and keyboard; works on low-end Android browsers (no build step, ~0.7 MB).
 - Diverse, respectful African cast; an interest-free character presented positively.
-- Planned: French; **Arabic jam'iya mode** (UAE setting, AED, fixed rotation, interest-free variant, RTL layout).
+- **Languages (v0.2):** full English, French and Arabic. Arabic uses a right-to-left layout, an Arabic display font (Baloo Bhaijaan 2), feminine second-person address for the player character, and shows the pot's approximate AED value. Aïcha's interest-free "way" is framed as the jam'iya tradition familiar in the Gulf.
+- Planned: a full **Dubai jam'iya mode** (UAE setting and scenarios, AED economy, fixed-rotation interest-free variant, Zakat on savings).
 
 ## 8. Art, audio, tech
 - Bright illustrated West African compound at dusk, bunting, plastic chairs, a golden pot. Rounded "Baloo 2" / "Nunito" type.
-- WebAudio-synthesised SFX (coins, reveal, win): no audio files to load.
+- WebAudio-synthesised SFX (coins, drum roll, gavel, card flips, star chimes) and a looping highlife/makossa-style music track, all generated in code: no audio files to load.
+- Juice: month banners, a dusk-to-night lighting change for njangi night, coins that fly into a pot that "gulps", sealed bids flipping open lowest-to-highest, a SOLD! stamp, emoji reactions, screen shake on bad news, count-up numbers and confetti.
 - Vanilla HTML/CSS/JS on a 1280×720 stage scaled to any screen. The rules engine (`core.js`) is DOM-free and seeded, so it's testable and reusable (e.g. a multiplayer version).
+
+## 8b. Balance (v0.2)
+Tuned with an automated bot that plays hundreds of fast games (`tools/sim.js`, 60 games per strategy):
+
+| Strategy | v0.1 avg stars | v0.2 avg stars |
+|---|---|---|
+| Passive (never bids, sensible choices) | 3.7 | 2.4 |
+| Smart (reads the room, bids in months 1–3) | 4.0 | 3.8 |
+| Reckless (max bid, borrows for every bill) | 2.0 | 2.0 (machine + trust, but zero Jar and in debt) |
+| Random | 3.2 | 2.4 |
+
+v0.1 was too easy: just waiting earned almost every star. v0.2 changes: the machine star needs the machine **by month 4**, so waiting no longer gets it; neighbours bid harder when their need is 🔥; Jar goal 25,000; trust only +2 per on-time payment, so community choices matter; machine income +8,000.
 
 ## 9. Roadmap
 | Phase | Scope |
 |---|---|
-| Jam (Nov 2026) | Single-player, 6 months, 13 events, EN, accessibility settings |
-| Milestone 1 | French + Arabic jam'iya mode, 30+ events, tutorial pass, classroom mode with teacher summary |
+| Jam (Nov 2026) | Single-player, 6 months, 13 events on a difficulty curve, **EN/FR/AR with RTL**, accessibility settings, music |
+| Milestone 1 | Dubai jam'iya mode (UAE scenarios, AED economy, Zakat), 30+ events, tutorial pass, classroom mode with teacher summary |
 | Milestone 2 | **Real multiplayer njangi** with friends (async, mobile), seasons, cosmetic tailoring shop |
 | Milestone 3 | Partnerships with MFIs/fintechs for "real-world challenge" modules; analytics on learning outcomes |
 
